@@ -7,11 +7,11 @@
     margin-left: 20px;
 }
 
-/*@import url(http://fonts.googleapis.com/css?family=Source+Code+Pro:400,600);
-body {
-    font-size: 12px;
-    font-family: "Source Code Pro", Consolas, monaco, monospace;
-}*/
+
+h6 {
+    color: #455a64;
+    line-height: 120% !important;
+}
 
 /* Showing scrollbar at all times */
 /* Source: http://stackoverflow.com/questions/4050076/how-to-always-show-the-vertical-scrollbar-in-a-browser */
@@ -23,6 +23,15 @@ body {
   border-radius: 4px;
   background-color: rgba(0, 0, 0, .5);
   -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+}
+
+.card{
+    width: 270px;
+}
+
+.card .card-content{
+    padding-left: 10px !important;
+    padding-right: 10px !important;
 }
 
 /* ========================================
@@ -54,21 +63,15 @@ body {
 #radarchart{
     display: inline-block !important;
     height: 300px;
-    margin-left: -190px !important;
-    margin-right: 50px !important;
+    margin-left: -80px !important;
+    margin-top: 20px;
+    z-index:1;
+    position: absolute;
 }
 
 /* data table styles */
 #grid {
     margin-left: 50px !important;
-}
-
-#box {
-    left: 1130px;
-    top: 150px;
-    margin-right: 20px !important;
-    position: absolute;
-    line-height: 200%;
 }
 
 /* ========================================

@@ -12,9 +12,8 @@
     <title>Lucia and Yiyi take D3</title>
 
     <!-- styling css -->
-    <!-- <link rel="stylesheet" href="https://rawgit.com/tpreusse/radar-chart-d3/master/src/radar-chart.css"> -->
     <link rel="stylesheet" href="radar-chart.css">
-    <link rel="stylesheet" type="text/css" href="https://syntagmatic.github.io/parallel-coordinates/d3.parcoords.css">
+    <link rel="stylesheet" type="text/css" href="d3.parcoords.css">
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" >
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
@@ -28,16 +27,13 @@
     <script src="https://d3js.org/d3.v3.js"></script>
     <script src="divgrid.js"></script>
     <script src="radar-chart.js"></script>
-    <!-- <script src="https://rawgit.com/tpreusse/radar-chart-d3/master/src/radar-chart.js"></script> -->
-    <script src="https://syntagmatic.github.io/parallel-coordinates/d3.parcoords.js"></script>
+    <script src="d3.parcoords.js"></script>
 </head>
 
 <body>
     <!-- ==================================================== -->
     <!-- ================== HTML ELEMENTS =================== -->
     <!-- ==================================================== -->
-
-
     <!-- buttons -->
     <nav>
         <div class="nav-wrapper">
@@ -60,27 +56,29 @@
                 Click one of the years in the top navigation bar to see data for that year
             </p>
         </div>
-        <div class="col s8">
+        <div class="col s7">
             <div id="parallelcoords" class="parcoords">
             </div>
         </div>
-        <div class="col s4">
+        <div class="col s2">
             <div id="radarchart">
             </div>
         </div>
-        <div class="col s4 m3">
-          <div id = "box" class="card blue-grey darken-1">
-            <div class="card-content white-text">
-              <span class="card-title">Legend</span>
-              <p>Teaching score: the learning environment; <br />
-                International score: international outlook; <br />
-                Research score: volume, income, reputation; <br />
-                Citations score: research influence; <br />
-                Income score: industry knowledge transfer; <br />
-                Staff to Student score: staff to student ratio; <br />
-                Num Students: total number of students. </p>
+        <div class="col s2">
+            <div id = "box" class="card blue-grey ">
+                <div class="card-content white-text">
+                    <span class="card-title">Legend</span>
+                    <p>
+                        <b>• Teaching score</b>: the learning environment<br />
+                        <b>• International score</b>: international outlook <br />
+                        <b>• Research score</b>: volume, income, reputation <br />
+                        <b>• Citations score</b>: research influence <br />
+                        <b>• Income score</b>: industry knowledge transfer <br />
+                        <b>• Staff to Student score</b>: staff to student ratio <br />
+                        <b>• Num Students</b>: total number of students
+                    </p>
+                </div>
             </div>
-          </div>
         </div>
         <div class="col s12">
             <div id="datatable">
@@ -104,9 +102,17 @@
     // displayChart shows the chart of a specified year
     function displayChart(year) {
         document.getElementById("chartprompt").innerHTML =
-        "Select a range of values by clicking and dragging on the axes of the parallel coordinates"
-        + "<br />" + "Hover over the table to highlight any specific university";
-
+        "<h6>" +
+        "To play with the charts" +
+        "<br />" +
+        "1. Select a range of values by clicking and dragging on the axes of the parallel coordinates" +
+        "<br />" +
+        "2. Hover over the table to highlight any specific university" +
+        "</h6>";
+        // var charprompt = document.getElementById("chartprompt");
+        // if (charprompt){
+        //     charprompt.remove();
+        // }
 
         // highlight the button for the selected year
         var buttons = document.getElementsByTagName('li'), names = [];
@@ -184,12 +190,12 @@
             .hideAxis(["University"])
             .margin({ top: 30, left: 10, bottom: 10, right: 10})
             .composite("darken")
-            .alpha(0.35)
+            .alphaOnBrushed(0.1)
+            .brushedColor("#FFA500")
+            .alpha(0.5)
             // .dimensions(dimensions)
-            .render()      
+            .render()
             .brushMode("1D-axes");  // enable brushing
-            
-
 
             parcoords.svg.selectAll("text").style("font", "10px sans-serif");
             chart_radar.datum(radarChartFormat(data)).call(chart);
@@ -211,21 +217,21 @@
                 "mouseover": function(d) {
                     parcoords.highlight([d]);
                     parcoords.color('orange');
+
+                    chart.config({color: function(i){return "#FFA500";}});
                     chart_radar.datum(radarChartFormat(d)).call(chart);
-                    // chart.color('orange'); [I AM THINKING IT SHOULD BE SOMETHING LIKE THIS??]
                 },
                 "mouseout": function(){
                     parcoords.unhighlight();
+
+                    chart.config({color: d3.scale.category10()});
+                    chart_radar.datum(radarChartFormat(data)).call(chart);
                 }
             });
 
             // highlight datapoint in charts based on mouseover in the table
             // brushing
-            parcoords.brushedColor("orange");
             parcoords.on("brush", function(selected_data) {
-                // parcoords.alpha(2);	[I THOUGHT THIS WOULD MAKE THE LINES THICKER BUT IT IS NOT...]
-                parcoords.color('orange');
-                parcoords.alphaOnBrushed(0.3);
                 d3.select("#datatable")
                 .datum(selected_data)
                 .call(datatable)
@@ -234,82 +240,20 @@
                     "mouseover": function(d) {
                         parcoords.highlight([d]);
                         parcoords.color('orange');
+                        // parcoords.color(d3.scale.category10());
+
+                        chart.config({color: function(i){return "#FFA500";}});
                         chart_radar.datum(radarChartFormat(d)).call(chart);
-                        // chart.color('orange'); [I AM THINKING IT SHOULD BE SOMETHING LIKE THIS??]
                     },
                     "mouseout": function(){
                         parcoords.unhighlight();
+
+                        chart.config({color: d3.scale.category10()});
                         chart_radar.datum(radarChartFormat(selected_data)).call(chart);
                     }
                 });
                 chart_radar.datum(radarChartFormat(selected_data)).call(chart);
             });
-
-/////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////
-//          TRYING TOOLTIP CODE
-//          Source: https://gist.github.com/mostaphaRoudsari/b4e090bb50146d88aec4
-///////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////
-            // parcoords.on("mousemove", function() {
-            //         var mousePosition = d3.mouse(this);             
-            //         highlightLineOnClick(mousePosition, true); //true will also add tooltip
-            //         })
-            //         .on("mouseout", function(){
-            //             cleanTooltip();
-            //             parcoords.unhighlight();
-            //         });
-            
-            // function cleanTooltip(){
-            //     // removes any object under #tooltip is
-            //     parcoords.svg.selectAll("#tooltip")
-            //         .remove();
-            // }
-            
-            // function addTooltip(clicked, clickedCenPts){
-                
-            //     // add tooltip to multiple clicked lines
-            //     var clickedDataSet = [];
-            //     var margins = parcoords.margin()
-            //     // get all the values into a single list
-            //     // I'm pretty sure there is a better way to write this is Javascript
-            //     for (var i=0; i<clicked.length; i++){
-            //         for (var j=0; j<clickedCenPts[i].length; j++){
-            //             var text = d3.values(clicked[i])[j];
-            //             // not clean at all!
-            //             var x = clickedCenPts[i][j][0] - margins.left;
-            //             var y = clickedCenPts[i][j][1] - margins.top;
-            //             clickedDataSet.push([x, y, text]);
-            //         }
-            //     };
-            //     // add rectangles
-            //     var fontSize = 14;
-            //     var padding = 2;
-            //     var rectHeight = fontSize + 2 * padding; //based on font size
-            //     parcoords.svg.selectAll("rect[id='tooltip']")
-            //             .data(clickedDataSet).enter()
-            //             .append("rect")
-            //             .attr("x", function(d) { return d[0] - d[2].length * 5;})
-            //             .attr("y", function(d) { return d[1] - rectHeight + 2 * padding; })
-            //             .attr("rx", "2")
-            //             .attr("ry", "2")
-            //             .attr("id", "tooltip")
-            //             .attr("fill", "grey")
-            //             .attr("opacity", 0.9)
-            //             .attr("width", function(d){return d[2].length * 10;})
-            //             .attr("height", rectHeight);
-            //     // add text on top of rectangle
-            //     parcoords.svg.selectAll("text[id='tooltip']")
-            //         .data(clickedDataSet).enter()
-            //             .append("text")
-            //             .attr("x", function(d) { return d[0];})
-            //             .attr("y", function(d) { return d[1]; })
-            //             .attr("id", "tooltip")
-            //             .attr("fill", "white")
-            //             .attr("text-anchor", "middle")
-            //             .attr("font-size", fontSize)
-            //             .text( function (d){ return d[2];})    
-            // }
         });
     }
 
