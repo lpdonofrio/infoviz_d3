@@ -1,0 +1,52 @@
+World Rank,University,Country,Teaching,International,Research,Citations,Income,Staff to Student,Num Students
+1,California Institute of Technology,USA,94.4,65.8,98.2,99.8,91.2,86.1,2243
+2,Harvard University,USA,95.3,66.2,98.5,99.1,40.6,77.6,20152
+2,University of Oxford,United Kingdom,89,90.2,98.5,95.4,90.3,66.2,19919
+4,Stanford University,USA,94.7,68,96.8,99.1,61.3,82.3,15596
+5,Massachusetts Institute of Technology,USA,92.9,82,89,100,94.3,77.2,11074
+6,Princeton University,USA,89.9,59.6,97.6,99.7,80.5,79.7,7929
+7,University of Cambridge,United Kingdom,90.6,86.7,95.3,95.7,52.8,65.4,18812
+8,"University of California, Berkeley",USA,83.2,57.3,97.5,99.3,59.5,46,36186
+9,University of Chicago,USA,85.6,58.6,88.2,98,60.5,86.1,14221
+10,Imperial College London,United Kingdom,84.5,91.8,88.1,90,72.3,65.8,15060
+11,Yale University,USA,89.5,57.6,90.5,93.5,38.7,96.6,11751
+12,"University of California, Los Angeles",USA,84.8,46.4,91,95.6,60.5,71.7,38206
+13,Columbia University,USA,86.6,68,79.1,95.6,60.5,90.3,25055
+14,ETH Zurich,Switzerland,77.6,96.7,88.2,85,78.8,53.2,18178
+15,Johns Hopkins University,USA,75.7,59.3,85.1,95,100,100,15128
+16,University of Pennsylvania,USA,79.8,40.6,81.2,95,45.2,87.8,20376
+17,Duke University,USA,73.9,50,73,96.7,100,94.9,15172
+18,University of Michigan,USA,70,49.5,86.2,90.8,53.5,77.2,41786
+19,Cornell University,USA,72.1,55.6,83.8,90.8,35.8,72.2,21424
+20,University of Toronto,Canada,73.6,70,81.5,84.5,45.8,32.9,66198
+21,University College London,United Kingdom,70.5,90.2,77.5,84.1,46.8,70,26607
+22,Northwestern University,USA,70.2,34.4,76,97.1,61.9,57,18334
+23,University of Tokyo,Japan,84.7,29.6,88,69.8,56.7,91.1,26199
+24,Carnegie Mellon University,USA,63.1,58.1,77.4,93.9,52.5,59.9,11885
+25,University of Washington,USA,65.6,43.2,69.2,95.6,43.1,65.4,44020
+26,National University of Singapore,Singapore,68,94.3,77.8,66.4,64.3,49.8,31592
+27,University of Texas at Austin,USA,64.7,42.4,69,91.3,59.6,41.8,49427
+28,Georgia Institute of Technology,USA,59.4,67.8,68.6,87.9,71.3,30.4,19967
+29,University of Illinois at Urbana-Champaign,USA,66,41.1,78.9,79.4,60.5,36.3,42727
+30,University of Wisconsin-Madison,USA,69.8,32.3,67.7,87.2,51.2,69.6,39655
+31,University of British Columbia,Canada,59.9,84.2,67.9,83.7,43.1,40.9,50152
+32,London School of Economics and Political Science,United Kingdom,65.2,81.7,74.2,69.2,43.6,65.1,26366
+33,"University of California, Santa Barbara",USA,47.8,61.8,58.2,99.4,86.7,0,22020
+34,University of Melbourne,Australia,57.1,81.3,64.2,80.2,65.1,15.2,40128
+35,McGill University,Canada,61.5,77.8,68.1,74.5,40.8,57.4,31326
+36,Karolinska Institute,Sweden,58.1,73.2,67.7,76,68.7,66.7,7774
+37,Ecole Polytechnique Federale de Lausanne,Switzerland,52.9,98.2,48.3,95.9,49.2,70.9,9666
+38,King's College London,United Kingdom,56.2,86,56.8,87.6,38.3,67.1,21394
+39,University of Edinburgh,United Kingdom,56.6,81.5,56.9,87.6,42.5,55.7,25774
+40,New York University,USA,65.4,41.8,58.4,87.9,29.9,86.5,42056
+40,"University of California, San Diego",USA,52,35.6,63,96.7,48.4,87.8,27233
+42,Washington University in St Louis,USA,59.5,44.6,52.9,96.4,60.5,91.1,12528
+43,University of Hong Kong,Hong Kong,61.6,80.3,69.9,61.5,56.9,40.9,19835
+44,Seoul National University,South Korea,76.4,29.4,79.2,47.3,86,56.5,26389
+45,Peking University,China,72.3,60.6,58.1,62.8,99.9,80.2,40148
+46,University of Minnesota,USA,61.4,31.7,62.7,81.2,60.5,39.2,46825
+47,University of North Carolina at Chapel Hill,USA,57.6,35,55.3,90.2,39.1,84.4,26518
+48,Australian National University,Australia,51.8,91.4,65.1,71.2,44.8,34.2,14604
+49,Pennsylvania State University,USA,55.3,33.7,65.9,79.4,60,62.9,44501
+50,Boston University,USA,56.5,44.2,46.1,95.3,31.1,78.9,24789
+50,Tsinghua University,China,66.8,42.6,65.9,59.9,99.9,57.4,39763

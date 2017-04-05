@@ -1,0 +1,143 @@
+/* styling for D3 assignment */
+
+/* ========================================
+================= general =================
+======================================== */
+.title{
+    margin-left: 20px;
+}
+
+/*@import url(http://fonts.googleapis.com/css?family=Source+Code+Pro:400,600);
+body {
+    font-size: 12px;
+    font-family: "Source Code Pro", Consolas, monaco, monospace;
+}*/
+
+/* Showing scrollbar at all times */
+/* Source: http://stackoverflow.com/questions/4050076/how-to-always-show-the-vertical-scrollbar-in-a-browser */
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 7px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, .5);
+  -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+}
+
+/* ========================================
+============ radar chart styles ===========
+======================================== */
+.radar-chart .area {
+    fill-opacity: 0;
+}
+.radar-chart.focus .area {
+    fill-opacity: 0;
+}
+.radar-chart.focus .area.focused {
+    fill-opacity: 0.5;
+}
+
+
+/* ========================================
+==== parallel coordinates chart styles ====
+======================================== */
+#parallelcoords{
+    display: inline-block !important;
+    width: 800px;
+    height: 330px;
+    margin-left: 0px !important;
+    margin-right: 50px !important;
+    /*background-color: transparent !important;*/
+}
+
+#radarchart{
+    display: inline-block !important;
+    height: 300px;
+    margin-left: -190px !important;
+    margin-right: 50px !important;
+}
+
+/* data table styles */
+#grid {
+    margin-left: 50px !important;
+}
+
+#box {
+    left: 1130px;
+    top: 150px;
+    margin-right: 20px !important;
+    position: absolute;
+    line-height: 200%;
+}
+
+/* ========================================
+============ text table styles ============
+======================================== */
+
+#datatable {
+   display: inline-block !important;
+   margin-left: 50px !important;
+   margin-right: 50px !important;
+   margin-top: 40px !important;
+   height: 280px !important;
+   overflow: auto !important;
+   line-height: 1.5 !important;
+   width: 90%;
+}
+
+.row, .header {
+    clear: left;
+    font-size: 12px;
+    margin-bottom: 0px !important;
+    padding-top: 3px !important;
+    padding-bottom: 3px !important;
+}
+
+.row:nth-child(odd) {
+    background: rgba(0,0,0,0.05);
+}
+
+.header {
+    font-weight: bold;
+    position: fixed;
+    margin-top: -20px;
+}
+
+/* style for all cells and columns */
+.cell {
+    float: left;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 80px;
+    height: 18px;
+}
+
+/* style for a specific column */
+.col-1 {
+    width: 270px;
+}
+.col-2 {
+    width: 140px;
+}
+.col-3 {
+    width: 100px;
+}
+.col-4 {
+    width: 120px;
+}
+.col-5 {
+    width: 100px;
+}
+.col-6 {
+    width: 100px;
+}
+.col-7 {
+    width: 100px;
+}
+.col-8 {
+    width: 150px;
+}
+.col-9 {
+    width: 100px;
+}
