@@ -7,27 +7,29 @@
     margin-left: 20px;
 }
 
+.card-title{
+    font-size: 20px !important;
+}
+
+#chartprompt{
+    padding-left: 25px;
+}
 
 h6 {
     color: #455a64;
-    line-height: 120% !important;
+    line-height: 150% !important;
 }
 
-/* Showing scrollbar at all times */
-/* Source: http://stackoverflow.com/questions/4050076/how-to-always-show-the-vertical-scrollbar-in-a-browser */
-::-webkit-scrollbar {
-  -webkit-appearance: none;
-  width: 7px;
-}
-::-webkit-scrollbar-thumb {
-  border-radius: 4px;
-  background-color: rgba(0, 0, 0, .5);
-  -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
-}
-
+/* ========================================
+============= legend for axes =============
+======================================== */
 .card{
     width: 270px;
 }
+
+ .card-action{
+     padding-left: 10px !important;
+ }
 
 .card .card-content{
     padding-left: 10px !important;
@@ -83,7 +85,7 @@ h6 {
    margin-left: 50px !important;
    margin-right: 50px !important;
    margin-top: 40px !important;
-   height: 230px !important;
+   height: 280px !important;
    overflow: auto !important;
    line-height: 1.5 !important;
    width: 90%;
@@ -143,4 +145,16 @@ h6 {
 }
 .col-9 {
     width: 100px;
+}
+
+/* Showing scrollbar at all times */
+/* Source: http://stackoverflow.com/questions/4050076/how-to-always-show-the-vertical-scrollbar-in-a-browser */
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 7px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, .5);
+  -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
 }

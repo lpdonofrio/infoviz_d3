@@ -9,7 +9,7 @@
     http://bl.ocks.org/syntagmatic/3687826
     http://bl.ocks.org/tpreusse/2bc99d74a461b8c0acb1 -->
 
-    <title>Lucia and Yiyi take D3</title>
+    <title>Lucia and Yiyi D3 Adventure</title>
 
     <!-- styling css -->
     <link rel="stylesheet" href="radar-chart.css">
@@ -28,6 +28,7 @@
     <script src="divgrid.js"></script>
     <script src="radar-chart.js"></script>
     <script src="d3.parcoords.js"></script>
+    <script src="sylvester.js"></script>
 </head>
 
 <body>
@@ -51,10 +52,10 @@
 
     <!-- text prompt -->
     <div class="row">
-        <div class="col s12">
-            <p id="chartprompt">
-            <h6>Click one of the years in the top navigation bar to see data for that year</h6>
-            </p>
+        <div class="col s12" id="chartprompt">
+            <h6>
+                Click one of the years in the top navigation bar to see data for that year
+            </h6>
         </div>
         <div class="col s7">
             <div id="parallelcoords" class="parcoords">
@@ -65,7 +66,7 @@
             </div>
         </div>
         <div class="col s2">
-            <div id = "box" class="card blue-grey ">
+            <div id = "box" class="card blue-grey">
                 <div class="card-content white-text">
                     <span class="card-title">Legend</span>
                     <p>
@@ -78,6 +79,12 @@
                         <b>• Num Students</b>: total number of students
                     </p>
                 </div>
+                <div class="card-action">
+                    <a href="https://www.kaggle.com/mylesoneill/world-university-rankings">
+                        Original Kaggle Dataset
+                    </a>
+                </div>
+
             </div>
         </div>
         <div class="col s12">
@@ -101,6 +108,8 @@
     // when a user clicks on the corresponding button
     // displayChart shows the chart of a specified year
     function displayChart(year) {
+        console.log(document.getElementById("chartprompt").innerHTML);
+        $("#chartprompt").html("");
         document.getElementById("chartprompt").innerHTML =
         "<h6>" +
         "To play with the charts" +
@@ -109,10 +118,6 @@
         "<br />" +
         "2. Hover over the table to highlight any specific university" +
         "</h6>";
-//         var charprompt = document.getElementById("chartprompt");
-//         if (charprompt){
-//             charprompt.remove();
-//         }
 
         // highlight the button for the selected year
         var buttons = document.getElementsByTagName('li'), names = [];
@@ -122,6 +127,7 @@
         };
 
         $("#box").show();
+
         renderChart('timesData' + year + '.csv');
     }
 
@@ -151,36 +157,6 @@
 
         // --------------- read data and charts update ---------------
         d3.csv(file_name, function(data) {
-
-            // var dimensions = {
-            //                 'World Rank': {
-            //                     tickValues: [0, 50]
-            //                 }
-            //                 'Country': {
-            //                     tickValues: ['USA', 'South Korea']
-            //                 }
-            //                 'Teaching': {
-            //                     tickValues: [0, 100]
-            //                 }
-            //                 'International': {
-            //                     tickValues: [0, 100]
-            //                 }
-            //                 'Research': {
-            //                     tickValues: [0,100]
-            //                 }
-            //                 'Citations': {
-            //                     tickValues: [0, 100]
-            //                 }
-            //                 'Income': {
-            //                     tickValues: [0, 100]
-            //                 }
-            //                 'Staff to Student': {
-            //                     tickValues: [0, 100]
-            //                 }
-            //                 'Num Students': {
-            //                     tickValues: [0, 80000]
-            //                 }};
-
             // PARALLEL COORDINATES
             // parallel coordinates initializations & data binding
             d3.select("#parallelcoords").select("svg").remove();
@@ -192,11 +168,11 @@
             .alphaOnBrushed(0.1)
             .brushedColor("#FFA500")
             .alpha(0.5)
-            // .dimensions(dimensions)
+            .smoothness(.1)
             .render()
             .brushMode("1D-axes");  // enable brushing
 
-            parcoords.svg.selectAll("text").style("font", "10px sans-serif");
+            parcoords.svg.selectAll("text").style("font", "11px sans-serif");
             chart_radar.datum(radarChartFormat(data)).call(chart);
 
 
@@ -207,22 +183,26 @@
             var datatable = d3.divgrid();
 
             // highlight datapoint in charts based on mouseover in the table
-            // initial loading
+            // without brushing
             d3.select("#datatable")
             .datum(data)
             .call(datatable)
             .selectAll(".row")
             .on({
                 "mouseover": function(d) {
+                    // parallel coordinates config change
                     parcoords.highlight([d]);
                     parcoords.color('orange');
 
+                    // radar chart config change
                     chart.config({color: function(i){return "#FFA500";}});
                     chart_radar.datum(radarChartFormat(d)).call(chart);
                 },
                 "mouseout": function(){
+                    // parallel coordinates config change
                     parcoords.unhighlight();
 
+                    // parallel coordinates config change
                     chart.config({color: d3.scale.category10()});
                     chart_radar.datum(radarChartFormat(data)).call(chart);
                 }
@@ -237,16 +217,19 @@
                 .selectAll(".row")
                 .on({
                     "mouseover": function(d) {
+                        // parallel coordinates config change
                         parcoords.highlight([d]);
                         parcoords.color('orange');
-                        // parcoords.color(d3.scale.category10());
 
+                        // radar chart config change
                         chart.config({color: function(i){return "#FFA500";}});
                         chart_radar.datum(radarChartFormat(d)).call(chart);
                     },
                     "mouseout": function(){
+                        // parallel coordinates config change
                         parcoords.unhighlight();
 
+                        // radar chart config change
                         chart.config({color: d3.scale.category10()});
                         chart_radar.datum(radarChartFormat(selected_data)).call(chart);
                     }
@@ -261,12 +244,11 @@
     // area to be displayed on radar chart
 
     var radarChartAxes = ["Teaching", "International", "Research",
-    "Citations", "Income", "Staff to Student"];
+    "Citations", "Income", "Staff Student Score"];
 
     // given data in the original format,
     // return reformatted data for radar chart
     function radarChartFormat(data){
-        // TODO: need to handle empty selection!
         var result = [];
         if (data.constructor === Array){
             data.forEach(function(item){
